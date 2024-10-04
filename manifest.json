@@ -1,20 +1,26 @@
 {
   "name": "Code Line Daily",
-  "version": "1.4",
+  "version": "1.5",
   "description": "Explore a new line of code every day.",
   "manifest_version": 3,
-  "browser_action": {
-    "default_icon": "cld.png",
-    "default_title": "A Line of code of the day."
+  "background": {
+    "service_worker": "service-worker.js"
   },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://cld.silvestar.codes/*"
+  ],
   "chrome_url_overrides": {
     "newtab": "cld.html"
   },
-  "permissions": [
-    "activeTab"
-  ],
-  "host_permissions": [
-    "https://cld.silvestar.codes/"
+  "content_scripts": [
+    {
+      "matches": ["https://cld.silvestar.codes/*"],
+      "js": ["content-script.js"]
+    }
   ],
   "icons": {
     "16": "cld16.png",
