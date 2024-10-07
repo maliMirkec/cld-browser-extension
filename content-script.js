@@ -17,10 +17,21 @@ function cld(e) {
 }
 
 function fetchLineOfCode() {
+  let content = ''
+  const p = document.createElement('p')
+  p.style = 'text-align: center'
+  document.getElementById("cld").appendChild(p)
+  const loading = setInterval(() => {
+    content += '.'
+    p.innerHTML = content;
+    if(content === '...') {
+      content = ''
+    }
+  }, 400)
   fetch("https://cld.silvestar.codes/api/get-random-line/")
     .then(response => response.json())
     .then(data => {
-      console.log('Line of code data:', data);
+      clearInterval(loading)
       cld(data);
     })
     .catch(err => console.error('Error fetching line of code:', err));

@@ -1,14 +1,13 @@
 {
   "name": "Code Line Daily",
-  "version": "1.5",
+  "version": "1.3",
   "description": "Explore a new line of code every day.",
   "manifest_version": 3,
   "background": {
     "service_worker": "service-worker.js"
   },
   "permissions": [
-    "activeTab",
-    "storage"
+    "activeTab"
   ],
   "host_permissions": [
     "https://cld.silvestar.codes/*"
